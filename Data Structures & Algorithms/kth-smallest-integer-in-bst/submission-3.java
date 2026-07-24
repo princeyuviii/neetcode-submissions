@@ -1,0 +1,27 @@
+
+class Solution {
+
+    private int count = 0 ;
+    private int answer = 0 ;
+
+    public int kthSmallest(TreeNode root, int k) {
+        dfs(root, k);
+        return answer;
+    }
+
+    private void dfs(TreeNode root, int k){
+        if(root==null){
+            return;
+        }
+
+        dfs(root.left, k);
+
+        count++;
+        if(count == k){
+            answer = root.val;
+            return;
+        }
+
+        dfs(root.right, k);
+    }
+}
